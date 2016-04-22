@@ -1,0 +1,11 @@
+/*怎样让main_activity.xml跟MainActivity.java关联起来,在MainActivity中敲入setContentView()*/
+protected void onCreate(Bundle savedInstanceState){
+   super.onCreate(savedInstanceState);
+   setContentView(R.layout.main_activity);
+   }
+//一些Tip
+wrap_content:长度宽度都是随控件改变 match_parent是指铺满父类容器，同fill_parent
+android:src="@drawable/ic_launcher"是imageView的内容图像
+android:background="@drawable/ic_launcher"是imageView背景图片
+background要设置高度 android:layout_height="Xsp"
+//button与ImageButton的区别,button有text的属性用于添加文本，ImageButton有的是src属性用于添加图片。相同点是都有background
