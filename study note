@@ -3,9 +3,54 @@ protected void onCreate(Bundle savedInstanceState){
    super.onCreate(savedInstanceState);
    setContentView(R.layout.main_activity);
    }
-//一些Tip
-wrap_content:长度宽度都是随控件改变 match_parent是指铺满父类容器，同fill_parent
-android:src="@drawable/ic_launcher"是imageView的内容图像
-android:background="@drawable/ic_launcher"是imageView背景图片
-background要设置高度 android:layout_height="Xsp"
-//button与ImageButton的区别,button有text的属性用于添加文本，ImageButton有的是src属性用于添加图片。相同点是都有background
+
+
+/*一些Tip
+*wrap_content:长度宽度都是随控件改变 match_parent是指铺满父类容器，同fill_parent
+*android:src="@drawable/ic_launcher"是imageView的内容图像
+*android:background="@drawable/ic_launcher"是imageView背景图片
+*background要设置高度 android:layout_height="Xsp"
+/*button与ImageButton的区别,button有text的属性用于添加文本，ImageButton有的是src属性用于添加图片。相同点是都有background
+
+
+//控件的监听事件(以按钮为例)，第一种方法是匿名内部类
+public class MainActivity extends Acitivity{
+  protected void OnCreate(Bundle savedInstanceState){
+  super.onCreate(savedInstanceState);
+  setContentView(R.layout.activity_main);
+ 
+  //设置Button的监听器，通过监听器实现我们点击Button要操作的事
+  loginButton=(Button)findViewById(R.id.button1);
+  loginButton.setOnClickListener(new OnClickListener(){
+  public void onClick(View arg0){
+  System.out.println("我的Button被点击了")；}
+  )}；}
+  //第二种方法是外部方法
+  public class MainActivity extends Activity{
+    /*注意先定义*/
+    private Button bt1;
+  protected void OnCreate(Bundle savedInstanceState){
+  super.onCreate(savedInstanceState);
+  setContentView(R.layout.activity_main);
+  bt1=(Button)findViewById(R.id.button1);}
+  //点击事件的外部类的写法
+  bt1.setOnClickListener(new MyOnClickListener(){
+  public void onClicl(View v){
+   super.onClick(v);
+   Toast.makeText(MainActivity.this,"bt1要执行的逻辑",1).show();}
+   });
+   }
+   Class MyOnClickListener implements OnClickListener{
+   public void onClick(View v){
+   ...........}
+//第三种方法是接口类
+public class MainActivity extends Actvity implements OnClickListener{
+ protected void OnCreate(Bundle savedInstanceState){
+  super.onCreate(savedInstanceState);
+  setContentView(R.layout.activity_main);
+  imgBt=(ImageButton)findViewById(R.id.imageButton1);
+  imgBt.setOnClickListener(this);}
+  OnClickListener listener=new OnClickListener(){
+   public void onClick(View v){
+   ...........................}
+   };}
