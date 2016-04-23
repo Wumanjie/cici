@@ -54,3 +54,21 @@ public class MainActivity extends Actvity implements OnClickListener{
    public void onClick(View v){
    ...........................}
    };}
+   
+//AutoCompleteTextView 功能是输入前几个字后动态匹配热门信息，android:completionThreshold="2"即表示为输入两个字后就有热搜下拉榜。但输入只能是一个短语一句话。
+/*在main_activity.xml*/
+<AutoCompleteTextView
+  android:id="@+id/autoCompleteTextView1"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:hint="请输入要搜索的关键词">
+  </AutoCompleteTextView>
+  public class MainActivity extends Activity{
+     private AutoCompleteTextView acTextView;
+     protected void onCreate(Bundle savedInstanceState){
+       super.onCreate(savedInstanceState);
+       setContentView(R.id.activity_main);
+       //初始化控件,配一个适配器，在class中初始化数据源，将适配器与Auto
+       acTextView=findViewById(R.id.autoCompleteTextView1);
+       
+
