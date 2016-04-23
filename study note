@@ -65,10 +65,37 @@ public class MainActivity extends Actvity implements OnClickListener{
   </AutoCompleteTextView>
   public class MainActivity extends Activity{
      private AutoCompleteTextView acTextView;
+     //举个例子的初始化数据源
+     private String[]res={"beijing1","beijing2","beijing3","shanghai1","shanghai2"};
      protected void onCreate(Bundle savedInstanceState){
        super.onCreate(savedInstanceState);
        setContentView(R.id.activity_main);
-       //初始化控件,配一个适配器，在class中初始化数据源，将适配器与Auto
-       acTextView=findViewById(R.id.autoCompleteTextView1);
+       //初始化控件,配一个适配器，在class中初始化数据源，将适配器与AutoCompleteTextView绑定
+       acTextView=(AutoCompleteTextView)findViewById(R.id.AutoCompleteTextView1);
+       ArrayAdapter<String>adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,res);
+       acTextView.setAdapter(adapter);
+       }
        
-
+ /*MultiAutoCompleteTextView支持多次输入，分别用分隔符分开（设置分隔符 mtxt.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer()); comma是逗号
+ */并且在个值选中时再次输入会自动匹配。android:completionThreshold="X"为设置多少字符的时候自动匹配
+ <MultiAutoCompleteTextView
+  android:id="@+id/autoCompleteTextView1"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:hint="请输入收信人邮箱/手机">
+  </MultiAutoCompleteTextView>
+  
+ //在MainActivity.java中
+ public class MainActivity extends Activity{
+     private MultiAutoCompleteTextView macTextView;
+     //举个例子的初始化数据源
+     private String[]res={"beijing1","beijing2","beijing3","shanghai1","shanghai2"};
+     protected void onCreate(Bundle savedInstanceState){
+       super.onCreate(savedInstanceState);
+       setContentView(R.id.activity_main);
+       //初始化控件,配一个适配器，在class中初始化数据源，将适配器与AutoCompleteTextView绑定
+       macTextView=(MultiAutoCompleteTextView)findViewById(R.id.MultiAutoCompleteTextView1);
+       ArrayAdapter<String>adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,res);
+       macTextView.setAdapter(adapter);
+       macTextView.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());}
+       }
