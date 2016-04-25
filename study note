@@ -99,3 +99,34 @@ public class MainActivity extends Actvity implements OnClickListener{
        macTextView.setAdapter(adapter);
        macTextView.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());}
        }
+       
+//ToggleButton 属性有：android:checked="true"(or false),android:textOff="关"，android:textOn="开"，开关的按键
+//在activity_main.xml中
+  <ToggleButton
+     android:checked="false"
+     android:textOn="开"
+     android:textOff="关"
+     android:id="@+id/toggleButton1"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     />
+     <ImageView
+       android:id="@+id/imageView1"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:background="@drawable/off"
+       />
+       //在MainActivity.java中
+       public class MainActivity extends Activity implements OnCheckedChangeListener {
+         private ToggleButton tb;
+         private ImageView img;
+         protected void onCreate(Bundle savedInstanceState){
+           super.onCreate(savedInstanceState);
+           setContentView(R.layout.activity_main);
+           tb=(ToggleButton)findViewById(R.id.toggleButton1);
+           img=(ImageView)findViewById(R.id.imageView1);
+           tb.setOnCheckedChangeListener(this);
+           }
+      public void onCheckedChanged(CompoundButton buttonView,boolean isChecked){
+         img.setBackgroundResource(isChecked?R.drawable.on:R.drawable.off);}}
+           
