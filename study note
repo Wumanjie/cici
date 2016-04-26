@@ -129,4 +129,75 @@ public class MainActivity extends Actvity implements OnClickListener{
            }
       public void onCheckedChanged(CompoundButton buttonView,boolean isChecked){
          img.setBackgroundResource(isChecked?R.drawable.on:R.drawable.off);}}
-           
+  //复选框 属性：android:id="@+id/checkbox", android:layout_width="wrap_content",android:layout_height="wrap_content",android:checked="false"(or true),android:text="男"。用于打钩项。
+  //在acitivity_main.xml中
+  <CheckBox
+  //打钩与否 true false
+     android:checked="false/true"
+     android:id="@+id/checkBox1"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:text="男"/>
+     
+<CheckBox
+  //打钩与否 true false
+     android:checked="false/true"
+     android:id="@+id/checkBox1"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:text="女"/>
+     
+     //在MainActivity.java中
+     public class MainActivity extends Activity{
+        protected void onCreate(Bundle savedInstanceState){
+          super.onCreate(savedInstanceState);
+          setContentView(R.layout.activity_main);
+          //初始化CheckBox
+          checkBox=(CheckBox)findViewById(R.id.checkBox1);
+          //设置监听事件
+          checkBox.setOnCheckedChangeListener(new OnCheckedChangeListener(){
+          public void onCheckedChanged(CompoundButton buttonView,boolean isChecked)
+            if(isChecked){
+            String text=checkBox.getText().toString();}
+            );}}
+   //RadioGroup & RadioButton 只能选择一个选项，并且第二次点击不能取消掉第一次的选择，就像性别选择男就不是女
+   //属性：android:orientation="vertical"(垂直分布)，android:orientation="horizontal"(水平分布)
+   //在activity_main.xml中
+   <RadioGroup
+      android:orientation="horizontal"
+      android:id="@+id/radioGroup1"
+      android:layout_width="wrap_content"
+      android:layour_height="wrap_content">
+      <RadioButton
+        android:id="@+id/radio0"
+        android:layout_width="wrap_contnet"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="男"/>
+      <RadioButton
+         android:id="@+id/radio1"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="女"/>
+   </RadioGroup>
+   
+//在MainActivity中导入包 android.widget.RadioGroup
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+
+public class MainActivity extends Activity implements OnCheckedChangeListener{
+  private RadioGroup rg;
+  protected void onCreate(savedInstancestate){
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    rg=(RadioGroup)findViewById(R.id.radioGroup1);
+    rg.setOnCheckedChangeListener(this);}
+    public void onCheckedChanged(RadioGroup group,int checkedId){
+      switch(CheckedId){
+        case R.id.radio0:
+           .........;break;
+       case R.id.radio1:
+         ..........;break;}
+        
+        
+        
