@@ -200,4 +200,16 @@ public class MainActivity extends Activity implements OnCheckedChangeListener{
          ..........;break;}
         
         
+/*AlertDialog常用方法
+*要创建一个AlertDialog,就要用到AlertDialog.Builder中的create()方法
+*setTitle 为对话框设置标题
+*setIcon 为对话框设置图标
+*setMessage 为对话框设置内容
+*setView 为对话框设置自定义样式
+*setItems 设置对话框的一个list，一般用于显示几个命令
+*setMultiChoiceItems 用来设置对话框显示一系列复选框
+*setSingleChoiceItems 设置单选框
+*setNeutralButton 普通按钮
+*setPositiveButton 添加确认按钮
+*setNegativeButton 添加取消按钮
         
