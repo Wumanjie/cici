@@ -1,0 +1,92 @@
+//无返回结果的页面跳转
+/*新建两个Activity,FActivity和SActivity分别表示两个页面，再建立两个android xml文件factivity跟sactivity.xml,线性的layout
+*/把FActivity作为显示的第一个页面，跳转到SActivity
+//在factivity.xml中
+<Button
+   android:id="@+id/button1_first"
+   android:layout_width="match_parent"
+   android:layout_height="wrap_content"
+   android:text="第一种启动方式"/>
+//在FActivity.java
+public class FActivity extends Activity{
+   private Button bt1;
+   protected void onCreate(Bundle savedInstancedState){
+      super.onCreate(savedInstanceState);
+      setContentView(R.id.factivity);
+      bt1=(Button)findViewById(R.id.button1_first);
+      bt1.setOnClickListener(new OnClickListener(){
+        public void onClick(View v){
+         Intent intent=new Intent(FActivity.this,SActivity.class);
+         startActivity(intent);
+         }
+         });
+         }
+         //在FActivity.this中的This跳转到全局的，要跳出onClick()方法的另一个方法
+public class FActivity extends Activity{
+   private Button bt1;
+   private Context mContext;
+     protected void onCreate(Bundle savedInstancedState){
+      super.onCreate(savedInstanceState);
+      setContentView(R.id.factivity);
+      mContext=this;
+       bt1=(Button)findViewById(R.id.button1_first);
+      bt1.setOnClickListener(new OnClickListener(){
+        public void onClick(View v){
+        Intent intent=new Intent(mContext,SActivity.class);
+        startActivity(intent);}
+        });}
+ //有返回结果的   页面跳转,返回的是一个“你好”的字符串
+ 
+ //在FActivity.java中
+ public class FActivity extends Activity{
+   private Button bt1;
+   private Context mContext;
+   private TextView tv;
+   protected void onCreate(Bundle savedInstancedState){
+      super.onCreate(savedInstanceState);
+      setContentView(R.id.factivity);
+      bt1=(Button)findViewById(R.id.button1_first);
+      tv=(TextView)findViewById(R.id.textView1);
+      bt1.setOnClickListener(new OnClickListener(){
+        public void onClick(View v){
+        Intent intent=new Intent(mContext,SActivity.class);
+        startActivityForResult(intent,1);
+        }
+        });
+        protected void onActivityResult(int requestCode,int resultCode,Intent data){
+          super.onActivityResult(requestCode,resultCode,data);
+          if(requestCode==1&&resultCode==2){
+          String content=data.getStringExtra("data");
+          tv.setText(content);}}
+          
+  //SActivity 
+  public class SActivity extends Activity{
+     private Button bt;//在sactivity.xml中也设一个普通的button
+     private String content="你好"；
+     protected void onCreate(Bundle savedInstanceState){
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.sactivity);
+       bt=(Button)findViewById(R.id.button1);
+       bt.setOnClickListener(new OnClickListener(){
+       public void onClick(View v){
+       Intent data=new Intent();
+       data.putExtra("data",content);
+       setResult(2,data);
+       finish();
+       }
+       });
+       }
+       //在factivity.xml中
+<Button
+   android:id="@+id/button1_first"
+   android:layout_width="match_parent"
+   android:layout_height="wrap_content"
+   android:text="第二种启动方式"/>
+<TextView
+   android:id="@+id/textView1"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:text="第二种启动方式" />
+     //在sactivity.xml只有一个button
+     
+   
