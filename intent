@@ -81,7 +81,7 @@ public class FActivity extends Activity{
    android:id="@+id/button1_first"
    android:layout_width="match_parent"
    android:layout_height="wrap_content"
-   android:text="第二种启动方式"/>
+   android:text="第二种启动方式"/> 
 <TextView
    android:id="@+id/textView1"
      android:layout_width="match_parent"
@@ -89,4 +89,12 @@ public class FActivity extends Activity{
      android:text="第二种启动方式" />
      //在sactivity.xml只有一个button
      
-   
+   //如何设置显示的第一个页面是所需要的页面，在MainiFest的activity当中加<intent-filter>,如果不是第一个显示的主页面，则不加<intent-filter>
+   <activity
+      android:name="com....."//为所要显示的activity的包名＋activity名
+      android:label="@string/app_name">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+      </activity>
