@@ -212,4 +212,125 @@ public class MainActivity extends Activity implements OnCheckedChangeListener{
 *setNeutralButton 普通按钮
 *setPositiveButton 添加确认按钮
 *setNegativeButton 添加取消按钮
+
+//确认对话框 
+/*在activity_main.xml中先定义
+*/再在Activity敲代码
+<Button
+   android:layout_width="fill_parent"
+   android:layout_height="wrap_content"
+   android:layout_marginTop="10dip"
+   android:id="@+id/dialog_btn1"
+   android:text="确认对话框"
+   />
+public class MainActivity extends Activity{
+  protected void onCreate(Bundle savedInstanceState){
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    initEvent();
+    }
+    private void initEvent(){
+      findViewById(R.id.dialog_btn1).setOnClickListener(new OnClickListener(){
+        public void onClick(View v){
+        showDialog1();
+        }};}
+        private void showDialog1(){
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setTitle("确认对话框");
+        builder.setIcon(R.drawable.ic_launcher);
+        builder.setMessage("确认对话框提示的内容");
+        builder.setPositiveButton("确认",new DialogInterface.OnClickListener(){
+           public void onClick(DialogInterface dialog,int which){
+             ...........}
+             });
+          builder.setPositiveButton("取消",new DialogInterface.OnClickListener(){
+           public void onClick(DialogInterface dialog,int which){
+             ...........}
+             });    
+         AlertDialog dialog=builder.create();
+         dialog.show();}}
+        
+     //单选对话框
+     <Button
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="10dip"
+       android:id="@+id/dialog_btn2"
+       android:text="单选对话框"/>
+
+public class MainActivity extends Activity{
+//添加数组
+  String[]single_list={"男","女","女博士","程序员"};
+  protected void onCreate(Bundle savedInstanceState){
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    initEvent();
+    }
+    private void initEvent(){
+      findViewById(R.id.dialog_btn1).setOnClickListener(new OnClickListener(){
+        public void onClick(View v){
+        showDialog2();
+        }};}
+        private void showDialog2(){
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setTitle("选择性别");
+        builder.setIcon(R.drawable.ic_launcher);
+        builder.setSingleChoiceItems(single_list,0,new DialogInterface.OnClickListener(){
+           public void onClick(DialogInterface dialog,int which){
+             ...........}
+             });
+            
+         AlertDialog dialog=builder.create();
+         dialog.show();}}
+//多选对话框
+ <Button
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="10dip"
+       android:id="@+id/dialog_btn3"
+       android:text="多选对话框"/>
+
+public class MainActivity extends Activity{
+//添加数组
+  String[]multi_list={"篮球","足球","高尔夫","乒乓"};
+  protected void onCreate(Bundle savedInstanceState){
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    initEvent();
+    }
+    private void initEvent(){
+      findViewById(R.id.dialog_btn1).setOnClickListener(new OnClickListener(){
+        public void onClick(View v){
+        showDialog2();
+        }};}
+        private void showDialog3(){
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setTitle("爱好");
+        builder.setIcon(R.drawable.ic_launcher);
+        builder.setMultiChoiceItems(multi_list,null,new DialogInterface.OnClickListener(){
+           public void onClick(DialogInterface dialog,int which,boolean isChecked){
+             if(isChecked){
+             ......}else{
+             ...........}}
+             });
+             builder.setNegativeButton("取消"，new DialogInterface.OnClickListener(){
+      dialog.dismiss();
+      }});
+      }
+             
+            
+         AlertDialog dialog=builder.create();
+         dialog.show();}}
+
+
+
+
+
+
+
+
+
+
+
+
         
