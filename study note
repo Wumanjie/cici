@@ -322,12 +322,37 @@ public class MainActivity extends Activity{
          AlertDialog dialog=builder.create();
          dialog.show();}}
 
+//菜单有三种类型，optionsMenu选项菜单，context上下文菜单，subMenu子菜单
 
+/* 创建选项菜单：onCreateOptionsMenu() 设置菜单项可设置menuadd(),还可以通过xml设置MenuInflater.inflater();
+*/设置菜单项点击事件：onOptionsItemSelected()
+//在MainActivity.java中
+protected void onCreate(Bundle savedInstanceState){
+   super.onCreate(savedInstanceState);
+   setContentView(R.layout.activity_main);}
+public boolean onCreateOptionsMenu(Menu menu){
+  getMenuInflater().inflate(R.menu.main,menu);
+  return true;}
+  }
+//在res/menu下的menu.xml
+<item
+   android:id="@+id/action_menu_item1"
+   android:orderInCategory="100"
+   android:showAsAction="never"
+   android:title="菜单1"/>
+<item
+   android:id="@+id/action_menu_item2"
+   android:orderInCategory="100"
+   android:showAsAction="never"
+   android:title="菜单2"/>
 
-
-
-
-
+/*动态添加子菜单*/
+//在MainActivity.java中
+protected void onCreate(Bundle savedInstanceState){
+  super.onCreate(savedInstanceState);
+  setContentView(R.layout.activity_main);}
+public boolean onCreateOptionsMenu(Menu menu){
+  SubMenu file=menu.addSubMenu("文件")
 
 
 
