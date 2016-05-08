@@ -347,15 +347,82 @@ public boolean onCreateOptionsMenu(Menu menu){
    android:title="菜单2"/>
 
 /*动态添加子菜单*/
-//在MainActivity.java中
+//在MainActivity.java中 方式一：直接改代码
 protected void onCreate(Bundle savedInstanceState){
   super.onCreate(savedInstanceState);
   setContentView(R.layout.activity_main);}
 public boolean onCreateOptionsMenu(Menu menu){
-  SubMenu file=menu.addSubMenu("文件")
-
-
-
-
-
-        
+  SubMenu file=menu.addSubMenu("文件");
+  SubMenu edit=menu.addSubMenu("编辑");
+  file.setHeaderTitle("文件操作");
+  file.setHeaderIcon(R.drawable.ic_launcher);
+  file.add(1,1,1,"新建");
+  file.add(1,2,1,"打开");
+  file.add(1,3,1,"保存");
+  edit.setHeaderTitle("编辑操作");
+  edit.setHeaderIcon(R.drawable.ic_launcher);
+  edit.add(2,1,1,"复制");
+  edit.add(2,2,1,"粘贴");
+  edit.add(2,3,1,"剪切");
+  return true;}
+public boolean onOptionsItemSelected(MenuItem item){
+   if(item.getGroupId()==1){...//对菜单一的第一项点击后...}
+    else if(item.getGroupId()==2){.....//对菜单一的第二项点击后....}
+    else if..
+    else if..
+    else..
+    return true;}
+    //在manifest中
+   <activity
+      android:name="com.bao.MainActivity"
+      android:label="@string/app_name"
+      android:theme="@android:style/Theme.Light.NoTitleBar">
+   //方式二：使用xml添加submenu子菜单 在res/menu下有个main.xml
+   <menu............>
+     <item 
+        android:showAsAction="never"
+        android:title="文件">
+        <menu>
+         <item
+           android:id="@+id/new_file"
+           android:showAsAction="never"
+           android:title="新建"/>
+         <item
+           android:id="@+id/save_file"
+           android:showAsAction="never"
+           android:title="保存"/>
+      
+           android:id="@+id/open_file"
+           android:showAsAction="never"
+           android:title="打开"/>
+         </menu>
+         </item>
+          <item 
+        android:showAsAction="never"
+        android:title="编辑">
+        <menu>
+         <item
+           android:id="@+id/c_edit"
+           android:showAsAction="never"
+           android:title="复制"/>
+         <item
+           android:id="@+id/v_edit"
+           android:showAsAction="never"
+           android:title="粘贴"/>
+      
+           android:id="@+id/x_edit"
+           android:showAsAction="never"
+           android:title="剪切"/>
+         </menu>
+         </item>
+</menu>
+       //在MainActivity中
+   public boolean onCreateOptionsMenu(Menu menu){
+      MenuInflater inflater=getMenuInflater();
+      inflater.inflate(R.menu.main,menu);}
+   public boolean onOptionsItemSelected(MenuItem item){
+       switch(item.getItemId()){
+         case R.id.new_file:.........;break;
+         case R.id.open_file:........;break;
+         case R.id.save_file:.....;break;
+         .....}}
