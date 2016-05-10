@@ -10,7 +10,7 @@
   android:text="@string/hello_world"/>
   /*在strings.xml里面改掉hello_world,改成一长串文字*/
      <string name="hello_world">他说饮过风声看过山水，说余生山水再不相逢，山长水阔知何处</string>
-
+//注意由于text过长，只能是在string.xml中定义
 
 
 /*跑两行字*/
