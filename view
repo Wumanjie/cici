@@ -1,0 +1,5 @@
+view的原理和用法
+（1），LayoutInflater的基本用法：
+获取实例的写法  LayoutInflater layoutInflater=LayoutInflater.from(context);
+获取实例后调用它的inflate()方法加载布局 layoutInflater.inflate(resourceId,root);
+inflate()方法一般接收两个参数，第一个是id,第二个是
